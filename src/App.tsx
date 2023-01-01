@@ -1,10 +1,14 @@
-import { Aside } from "./Components/Aside";
-import "./styles/GlobalStyles.css";
+import { Home } from "./page/Home";
+import { GlobalStyles } from "./styles/GlobalStyles";
+import { ProviderValues } from "./context";
 
 function App() {
   return (
     <>
-      <Aside />
+      <ProviderValues>
+        <GlobalStyles />
+        <Home />
+      </ProviderValues>
     </>
   );
 }
