@@ -1,24 +1,42 @@
 import { createContext, ReactNode, useState } from "react";
 
-export const CreateContext = createContext({});
+export const CreateContext = createContext({} as ValuesPropos);
 
 interface ValuesPropos {
-  children: ReactNode;
   setInputValue: (props: string) => void;
+  setCreateTag: (props: boolean) => void;
+  setDataOptions: (props: any) => void;
+  setEditorMap: (props: any) => void;
+
   inputValue: string;
-  setColor: (props: string) => void;
-  color: string;
+  dataOptions: any;
+  createTag: boolean;
+  editoMap: boolean;
 }
 
-export function ProviderValues({ children }: ValuesPropos) {
-  const [inputValue, setInputValue] = useState<string>("");
-  const [color, setColor] = useState("#fff");
+interface ProviderProps {
+  children: ReactNode;
+}
+
+export function ProviderValues({ children }: ProviderProps) {
+  const [inputValue, setInputValue] = useState("");
+  const [createTag, setCreateTag] = useState(false);
+  const [dataOptions, setDataOptions] = useState({
+    width: 0,
+    height: 0,
+    color: "",
+  });
+  const [editoMap, setEditorMap] = useState(false);
 
   const valor: ValuesPropos = {
     setInputValue,
     inputValue,
-    setColor,
-    color,
+    setCreateTag,
+    createTag,
+    setDataOptions,
+    dataOptions,
+    setEditorMap,
+    editoMap,
   };
 
   return (

@@ -1,16 +1,20 @@
-import { Children, useContext } from "react";
+import { useContext } from "react";
 import { CreateContext } from "../../context";
 import * as S from "./style";
 
 export const SquareTag = () => {
-  const { inputValue, color } = useContext(CreateContext);
+  const { createTag, dataOptions, editoMap } = useContext(CreateContext);
 
+  console.log(editoMap);
   return (
     <S.SquareBord>
-      {inputValue === "<header>" ? (
+      {createTag ? (
         <header
           style={{
-            background: color,
+            background: dataOptions.color,
+            width: dataOptions.width,
+            height: dataOptions.height,
+            border: editoMap ? "2px solid#a5cbec" : "transparent",
           }}
         >
           Entrei no header

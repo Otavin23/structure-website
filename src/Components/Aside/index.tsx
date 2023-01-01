@@ -5,26 +5,46 @@ import * as S from "./style";
 
 export const Aside = () => {
   const [openModal, setOpenModal] = useState(false);
-  const { setColor, color } = useContext(CreateContext);
+  const { setDataOptions, dataOptions } = useContext(CreateContext);
 
-  console.log(color);
+  console.log(dataOptions);
+
   return (
     <S.bgAside>
       <S.UlList>
         <li>
           W:
-          <input type="number" />
+          <input
+            type="text"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setDataOptions({
+                ...dataOptions,
+                width: e.target.value,
+              })
+            }
+          />
         </li>
         <li>
           H:
-          <input type="number" />
+          <input
+            type="text"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setDataOptions({
+                ...dataOptions,
+                height: e.target.value,
+              })
+            }
+          />
         </li>
         <li>
           Color:
           <input
-            type="text"
+            type="color"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setColor(e.target.value)
+              setDataOptions({
+                ...dataOptions,
+                color: e.target.value,
+              })
             }
           />
         </li>
